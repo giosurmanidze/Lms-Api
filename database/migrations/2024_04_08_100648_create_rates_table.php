@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('user_id')->constrained('users');
+            $table->decimal('rating', 5, 2);
             $table->timestamps();
         });
     }
