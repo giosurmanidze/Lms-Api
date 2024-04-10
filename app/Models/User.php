@@ -22,6 +22,14 @@ class User extends Authenticatable
         'password',
     ];
 
+
+    public function balance()
+    {
+        return $this->hasOne(UserBalance::class);
+    }
+
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
