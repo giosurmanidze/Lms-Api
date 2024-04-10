@@ -10,6 +10,8 @@ class Role extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['role'];
+
     public function premissions(): HasMany
     {
         return $this->hasMany(Permission::class);

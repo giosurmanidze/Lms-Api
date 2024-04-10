@@ -10,6 +10,8 @@ class Rate extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'book_id', 'rating'];
+
     public function books(): BelongsTo
     {
         return $this->belongsTo(Book::class);

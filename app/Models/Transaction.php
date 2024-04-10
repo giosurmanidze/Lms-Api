@@ -10,6 +10,8 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'book_id', 'publication_type', 'publication_date', 'due_date', 'return_date'];
+
     public function book(): BelongsTo
     {
         return $this->belongsTo(Book::class);
