@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('publication_date');
-            $table->string('status');
-            $table->string('quantity_available');
+            $table->integer('quantity_available');
             $table->timestamps();
         });
     }
