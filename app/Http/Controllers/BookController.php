@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Classes\ApiResponseClass;
 use App\Contracts\BookRepositoryInterface;
 use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 use App\Http\Resources\BookResource;
+use App\Models\Book;
 use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
@@ -34,7 +36,21 @@ class BookController extends Controller
              return ApiResponseClass::sendResponse(new BookResource($book),'Book Create Successful',201);
 
         }catch(\Exception $ex){
-            return ApiResponseClass::rollback($ex);
+            return ApiResponseClass::rollback($ex, $ex->getMessage());
+        }
+    }
+
+    public function update(UpdateBookRequest $request, Book $book)
+    {
+        DB::beginTransaction();
+        try{
+             $book = $this->bookRepository->update($request->validated(), $book);
+
+             DB::commit();
+             return ApiResponseClass::sendResponse(new BookResource($book),'Book Update Successful',201);
+
+        }catch(\Exception $ex){
+            return ApiResponseClass::rollback($ex, $ex->getMessage());
         }
     }
 }
