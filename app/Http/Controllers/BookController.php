@@ -58,6 +58,6 @@ class BookController extends Controller
     {
         $this->bookRepository->destroy($book);
 
-        return ApiResponseClass::sendResponse("Book delete Successful",'', 204);
+        return ApiResponseClass::sendResponse('',"Book delete Successful", 204);
     }
 }
