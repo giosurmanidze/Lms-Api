@@ -17,6 +17,13 @@ class BookController extends Controller
         $this->bookRepository = $bookRepository;
     }
 
+    public function index()
+    {
+        $data = $this->bookRepository->all();
+
+        return ApiResponseClass::sendResponse(BookResource::collection($data),'',200);
+    }
+
     public function store(StoreBookRequest $request)
     {
         DB::beginTransaction();
