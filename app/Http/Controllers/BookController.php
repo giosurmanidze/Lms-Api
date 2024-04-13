@@ -53,4 +53,11 @@ class BookController extends Controller
             return ApiResponseClass::rollback($ex, $ex->getMessage());
         }
     }
+
+    public function destroy(Book $book)
+    {
+        $this->bookRepository->destroy($book);
+
+        return ApiResponseClass::sendResponse("Book delete Successful",'', 204);
+    }
 }

@@ -23,4 +23,9 @@ class BookRepository implements BookRepositoryInterface
         $book->update($data);
         return $book->fresh();
     }
+
+    public function destroy(Book $book) 
+    {
+        return $book->delete();
+    }
 }
