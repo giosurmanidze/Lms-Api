@@ -18,20 +18,17 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
         'phone',
-        'address'
+        'address',
     ];
-
 
     public function balance()
     {
         return $this->hasOne(UserBalance::class);
     }
-
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -55,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
-        /**
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed

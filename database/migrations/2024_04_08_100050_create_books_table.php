@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('publication_date');
             $table->string('status');
-            $table->strng('quantity_available');
+            $table->string('quantity_available');
             $table->timestamps();
         });
     }
