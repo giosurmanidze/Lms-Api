@@ -23,6 +23,7 @@ class StoreBookRequest extends FormRequest
     {
         return [
             'title' => ['required', 'min:3'],
+            'author_ids' => ['required'],
             'publication_date' => ['required'],
             'quantity_available' => ['required']
         ];
