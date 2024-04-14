@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('genre_id')->constrained('genres');
             $table->foreignId('book_id')->constrained('books');
-            $table->timestamps();
         });
     }
 

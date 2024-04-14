@@ -12,7 +12,15 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    // Route::put("/books", [BookController::class,"update"]);
-    Route::apiResource('/books', BookController::class);
-    Route::apiResource('/authors', AuthorController::class);
+    Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+    Route::controller(BookController::class)->prefix('books')->middleware('role:admin')->group(function () {
+        Route::post('/', 'store');
+        Route::put('/{book}', 'update');
+        Route::delete('/{book}', 'destroy');
+    });
+
+    Route::controller(AuthorController::class)->prefix('authors')->middleware('role:admin')->group(function () {
+        Route::post('/', 'store');
+    });
 });

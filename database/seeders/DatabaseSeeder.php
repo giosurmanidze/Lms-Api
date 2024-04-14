@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Author::factory(10)->create();
-        Book::factory(10)->create();
+        // Book::factory(10)->create();
+
+        $this->call([
+            RoleSeeder::class,
+        ]);
     }
 }
